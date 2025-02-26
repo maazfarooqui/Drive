@@ -67,7 +67,7 @@ router.post('/login', body('username').trim().isLength({ min: 3 }), body('passwo
         return res.status(400).json({message:"invalid credentials"});
     }
 
-    const token = jwt.sign({id:user._id, username:user.username, email:user.email}, process.env.JWT_SECRET)
+    const token = jwt.sign({userId:user._id, username:user.username, email:user.email}, process.env.JWT_SECRET)
 
     res.cookie('token', token);
 
